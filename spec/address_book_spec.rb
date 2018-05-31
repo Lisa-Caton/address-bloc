@@ -37,4 +37,12 @@ RSpec.describe AddressBook do
     end
   end
 
+  describe "#delete_name" do
+    it "removes name from the entry" do
+      book = AddressBook.new
+      book.delete_name('Ada Lovelace')
+
+      expect(book.entries.size).to eq(0)
+    end
+  end
 end
