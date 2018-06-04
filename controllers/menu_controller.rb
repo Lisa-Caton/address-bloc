@@ -12,10 +12,11 @@ class MenuController
   def main_menu
     puts "Main Menu - #{address_book.entries.count} entries"
     puts "1 - View all entries"
-    puts "2 - Create an entry"
-    puts "3 - Search for an entry"
-    puts "4 - Import entries from a CSV"
-    puts "5 - Exit"
+    puts "2 - View Entry Number"
+    puts "3 - Create an entry"
+    puts "4 - Search for an entry"
+    puts "5 - Import entries from a CSV"
+    puts "6 - Exit"
     print "Enter your selection: "
 
     #3 retrieve user input from the command line using "gets"
@@ -31,18 +32,23 @@ class MenuController
         view_all_entries
         main_menu
       when 2
+        #use "system 'clear'" to clear the command line
         system "clear"
-        create_entry
+        view_entry_by_number
         main_menu
       when 3
         system "clear"
-        search_entries
+        create_entry
         main_menu
       when 4
         system "clear"
-        read_csv
+        search_entries
         main_menu
       when 5
+        system "clear"
+        read_csv
+        main_menu
+      when 6
         puts "Good-bye!"
         exit(0)
         #terminate the program using "exit(0)"
@@ -70,6 +76,15 @@ class MenuController
     end
     system "clear"
     puts "End of entries"
+  end
+
+  def view_entry_by_number
+    print "Please supply an entry number: "
+    if address_book.entries == 0
+        main_menu
+    else
+      p "There are #{address_book.entries.length} to choose from"
+    end
   end
 
   def create_entry
@@ -103,8 +118,8 @@ class MenuController
   def read_csv
   end
 
-  def entry_submenu(entry)
   #display the submenu options
+  def entry_submenu
     puts "n - next entry"
     puts "d - delete entry"
     puts "e - edit this entry"
@@ -113,7 +128,6 @@ class MenuController
     selection = gets.chomp
     #chomp removes any trailing whitespace from the string "gets" returns
     #This is necessary because "m " or "m\n" won't match  "m"
-
 
     case selection
       #when the user asks to see the *next entry*, aka "n"
@@ -135,5 +149,7 @@ class MenuController
         entry_submenu(entry)
     end
   end
+
+
 end
 

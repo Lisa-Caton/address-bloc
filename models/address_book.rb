@@ -27,7 +27,6 @@ class AddressBook
   end
 
 
-
   #We want to iterate over every address in the address book
   #if we find an entry whose name, phone_number, and email address,
   #match the entry that we've passed in, then we want to delete that enty!
@@ -41,8 +40,8 @@ class AddressBook
       #we will assign that entry to the entry thats going to be deleted
       end
     end
-
     #at the end of the method we will delete the entry, from our entries array
     @entries.delete(delete_entry)
   end
+
 end
