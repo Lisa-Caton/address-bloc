@@ -79,11 +79,16 @@ class MenuController
   end
 
   def view_entry_by_number
-    print "Please supply an entry number: "
-    if address_book.entries == 0
-        main_menu
+    print "Please type an entry number, or 0 to return to main menu "
+    selection = gets.chomp.to_i
+    if selection == 0
+      main_menu
+    elsif selection < @address_book.entries.count
+      #difference btw 'count' and 'length'
+    p @address_book.entries[selection]
     else
-      p "There are #{address_book.entries.length} to choose from"
+      p "#{selection} is not a valid input"
+      view_entry_by_number
     end
   end
 
@@ -119,7 +124,7 @@ class MenuController
   end
 
   #display the submenu options
-  def entry_submenu
+  def entry_submenu(entry)
     puts "n - next entry"
     puts "d - delete entry"
     puts "e - edit this entry"
