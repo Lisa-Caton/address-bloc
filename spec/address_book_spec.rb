@@ -149,7 +149,7 @@ RSpec.describe AddressBook do
     end
   end
 
-  describe "#import_from_csv" do
+  context "importing from entries_2.csv " do
     it "imports the correct number of entries" do
 
       book.import_from_csv("entries_2.csv")
