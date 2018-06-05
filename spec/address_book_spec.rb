@@ -114,7 +114,7 @@ RSpec.describe AddressBook do
     end
 
     it "imports the 1st entry" do
-    #we access the first entry in the array of entries that our "AddressBook" stores.
+    #we access the 1st entry in the array of entries that our "AddressBook" stores.
 
       book.import_from_csv("entries.csv")
       entry_one = book.entries[0]
@@ -146,6 +146,39 @@ RSpec.describe AddressBook do
 
       book.import_from_csv("entries.csv")
       entry_five = book.entries[3]
+    end
+  end
+
+  describe "#import_from_csv" do
+    it "imports the correct number of entries" do
+
+      book.import_from_csv("entries_2.csv")
+      book_size = book.entries.size
+      #remember "book" is saving as AddressBook.new
+      #so we are referencing "AddressBook.entries" variable to get its size!
+      #this varriable will be an array
+      expect(book_size).to eq(3)
+    end
+
+    it "imports the 1st entry" do
+    #we access the 1st entry in the array of entries that our "AddressBook" stores.
+
+      book.import_from_csv("entries_2.csv")
+      entry_one = book.entries[0]
+    end
+
+    it "imports the 2nd entry" do
+    #we access the 2nd entry in the array of entries that our "AddressBook" stores.
+
+      book.import_from_csv("entries_2.csv")
+      entry_one = book.entries[1]
+    end
+
+    it "imports the 3rd entry" do
+    #we access the 3rd entry in the array of entries that our "AddressBook" stores.
+
+      book.import_from_csv("entries_2.csv")
+      entry_one = book.entries[2]
     end
   end
 
