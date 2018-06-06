@@ -100,19 +100,17 @@ class AddressBook
   end
 
   def iterative_search(name)
-
     #search over the length of the entries
     #find the match
     #return the match
     #if no match is found, return nil
-
-    for i in entries.length do
-      if enteries.name == name
-        return name
+    @entries.each do |entry|
+      if entry.name == name
+        return entry
       end
     end
+
     return nil
   end
-
 
 end
