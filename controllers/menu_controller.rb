@@ -288,10 +288,6 @@ class MenuController
     end
   end
 
-  def demolish
-    address_book.entries.clear
-    puts "All entries have been deleted"
-  end
 
 end
 

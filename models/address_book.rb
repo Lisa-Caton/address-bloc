@@ -113,4 +113,11 @@ class AddressBook
     return nil
   end
 
+  def demolish
+    #assigning to eq an empty array
+    @entries = []
+    #clearing also works!
+    #@entries.clear
+  end
+
 end
