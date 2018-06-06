@@ -16,7 +16,8 @@ class MenuController
     puts "3 - Create an entry"
     puts "4 - Search for an entry"
     puts "5 - Import entries from a CSV"
-    puts "6 - Exit"
+    puts "6 - Demolish all entries!"
+    puts "7 - Exit"
     print "Enter your selection: "
 
     #3 retrieve user input from the command line using "gets"
@@ -49,6 +50,10 @@ class MenuController
         read_csv
         main_menu
       when 6
+        system "clear"
+        demolish
+        main_menu
+      when 7
         puts "Good-bye!"
         exit(0)
         #terminate the program using "exit(0)"
@@ -165,6 +170,7 @@ class MenuController
         #when a user is viewing the submenu and they press d, we call delete_entry
         #After the entry is deleted, control will return to view_all_entries and
         #the next entry will be displayed.
+
       when "e"
         edit_entry(entry)
         entry_submenu(entry)
@@ -175,6 +181,7 @@ class MenuController
         system "clear"
         main_menu
         #we return the user to the main menu
+
       else
         system "clear"
         puts "#{selection} is not a valid input"
@@ -211,7 +218,7 @@ class MenuController
   end
 
   def delete_entry(entry)
-    address_book.entries.delete_entry(entry)
+    address_book.entries.delete(entry)
     puts "#{entry.name} has been deleted"
     #We remove entry from address_book and
     #print out a message to the user that says  entry has been removed
@@ -279,6 +286,11 @@ class MenuController
         puts entry.to_s
         search_submenu(entry)
     end
+  end
+
+  def demolish
+    address_book.entries.clear
+    puts "All entries have been deleted"
   end
 
 end
