@@ -3,8 +3,8 @@
 
 ## Objective
 
-*Explain IRB.
+* Explain IRB.
 
-*Execute a basic Ruby program.
+* Execute a basic Ruby program.
 
-*Pass arguments to a command-line Ruby program.
+* Pass arguments to a command-line Ruby program.
